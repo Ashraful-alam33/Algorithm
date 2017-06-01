@@ -1,0 +1,48 @@
+
+#include<bits/stdc++.h>
+using namespace std;
+int arr[10000];
+
+ void Merge (int lo, int mid,int hi, int a[])
+ {
+     int i= lo,  j=mid+1 ,k=0;
+     int temp[hi-lo+1];
+     while(i<=mid && j<=hi)
+    {
+            if(a[i]<a[j])temp[k++] = a[i++];
+               else temp [k++]= a[j++];
+     }
+     while( i<=mid) temp [k++] = a[i++];
+     while (j<=hi) temp [k++] = a[j++];
+
+     k=0;
+
+     for (; lo<=hi; lo++)
+     {
+         a[lo] =temp [k++];
+     }
+ }
+
+ void MergeSort (int lo, int hi, int a[])
+ {
+      if (lo==hi) return ;
+   int mid =(lo+hi)/2;
+   MergeSort (lo,mid,a);
+   MergeSort (mid+1,hi,a);
+   Merge(lo,mid,hi,a);
+
+
+ }
+int main ()
+
+{    freopen (" input.txt","r", stdin);
+     freopen("sort.txt" ,"w" , stdout);
+     int n;
+     cin >>n;
+     for (int i=1; i<= n;i++) cin >> arr[i];
+
+
+     MergeSort (1,n,arr);
+     for (int i=1; i<=n;i++) cout << arr [i] << endl;
+      return 0;
+}
