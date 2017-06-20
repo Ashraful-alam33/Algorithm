@@ -1,0 +1,26 @@
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+struct Node
+ {
+
+int W, P;
+
+};
+
+Node arr []= { {30,45}, {6,59}, {20,50}};
+
+ bool cmp (Node a, Node b)
+ {
+     return a.W< b.W;
+
+ }
+ int main ()
+ {
+     sort (&arr[0], &arr [2+1], cmp); for (int i=0; i<3; i++)
+     cout << arr [i].W<< " "  << arr [i].P << endl;
+     return 0;
+
+ }
